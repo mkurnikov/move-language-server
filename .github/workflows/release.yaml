@@ -35,9 +35,9 @@ jobs:
         toolchain: stable
         profile: minimal
         override: true
-
-    - name: Build with --release
-      run: cargo build --release
+#
+#    - name: Build with --release
+#      run: cargo build --release
 
     - name: Upload binary as Release Asset
       uses: actions/upload-release-asset@v1
@@ -46,4 +46,4 @@ jobs:
       with:
         asset_path: ./target/release/move-language-server
         asset_name: move-ls-${{ matrix.os }}
-        upload_url: ${{ github.release.upload_url }}
+        upload_url: ${{ github.event.release.upload_url }}
