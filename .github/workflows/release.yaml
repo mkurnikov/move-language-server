@@ -1,6 +1,6 @@
 name: publish-release-assets
 on:
-  tag:
+  release:
     types: [published]
 
 env:
