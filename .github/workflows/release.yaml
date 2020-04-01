@@ -43,7 +43,7 @@ jobs:
         override: true
 
     - name: Build with --release
-      run: cargo build
+      run: cargo build --release
 
     - name: Upload binary as Release Asset (ubuntu, macos)
       if: matrix.os != windows-latest
