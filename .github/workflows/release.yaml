@@ -18,10 +18,13 @@ jobs:
         include:
           - os: ubuntu-latest
             platform: linux
+            release_bin: ${{ github.workspace }}/target/release/move-language-server
           - os: macos-latest
             platform: darwin
+            release_bin: ${{ github.workspace }}/target/release/move-language-server
           - os: windows-latest
             platform: win32
+            release_bin: ${{ github.workspace }}\target\release\move-language-server.exe
 
     steps:
     - name: Checkout repository
@@ -46,23 +49,11 @@ jobs:
       run: cargo build --release
 
     - name: Upload binary as Release Asset
-      if: matrix.os != 'windows-latest'
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ${{ github.workspace }}/target/release/move-language-server
-        asset_name: move-ls-${{ matrix.os }}
-        asset_content_type: application/octet-stream
-
-    - name: Upload binary as Release Asset
-      if: matrix.os == 'windows-latest'
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ${{ github.workspace }}\target\release\move-language-server.exe
-        asset_name: move-ls-${{ matrix.platform }}.exe
+        asset_path: ${{ matrix.release_bin }}
+        asset_name: move-ls-${{ matrix.platform }}
         asset_content_type: application/octet-stream
