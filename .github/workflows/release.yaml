@@ -46,7 +46,7 @@ jobs:
       run: cargo build --release
 
     - name: Upload binary as Release Asset (ubuntu, macos)
-      if: matrix.os != windows-latest
+      if: matrix.os != 'windows-latest'
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -57,7 +57,7 @@ jobs:
         asset_content_type: application/octet-stream
 
     - name: Upload binary as Release Asset (windows)
-      if: matrix.os == windows-latest
+      if: matrix.os == 'windows-latest'
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
