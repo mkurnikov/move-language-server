@@ -18,13 +18,13 @@ jobs:
         include:
           - os: ubuntu-latest
             platform: linux
-            release_bin: ${{ github.workspace }}/target/release/move-language-server
+            release_bin: target/release/move-language-server
           - os: macos-latest
             platform: darwin
-            release_bin: ${{ github.workspace }}/target/release/move-language-server
+            release_bin: target/release/move-language-server
           - os: windows-latest
             platform: win32
-            release_bin: ${{ github.workspace }}\target\release\move-language-server.exe
+            release_bin: target\release\move-language-server.exe
 
     steps:
     - name: Checkout repository
