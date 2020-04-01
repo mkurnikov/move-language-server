@@ -1,6 +1,6 @@
 name: publish-release-assets
 on:
-  release:
+  tag:
     types: [published]
 
 env:
@@ -39,10 +39,6 @@ jobs:
     - name: Build with --release
       run: cargo build --release
 
-    - name: Get last Release info
-      id: get_release
-      uses: bruceadams/get-release@v1
-
     - name: Upload binary as Release Asset
       uses: actions/upload-release-asset@v1
       env:
@@ -50,4 +46,4 @@ jobs:
       with:
         asset_path: ./target/release/move-language-server
         asset_name: move-ls-${{ matrix.os }}
-        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        upload_url: ${{ github.release.upload_url }}
