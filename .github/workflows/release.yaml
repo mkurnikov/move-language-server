@@ -46,7 +46,7 @@ jobs:
         override: true
 
     - name: Build with --release
-      run: cargo build --release
+      run: cargo build
 
     - name: Upload binary as Release Asset
       uses: actions/upload-release-asset@v1
