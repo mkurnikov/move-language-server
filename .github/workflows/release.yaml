@@ -35,9 +35,9 @@ jobs:
         toolchain: stable
         profile: minimal
         override: true
-#
-#    - name: Build with --release
-#      run: cargo build --release
+
+    - name: Build with --release
+      run: cargo build --release
 
     - name: Upload binary as Release Asset
       uses: actions/upload-release-asset@v1
