@@ -16,10 +16,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
-            platform: linux
-          - os: macos-latest
-            platform: darwin
+#          - os: ubuntu-latest
+#            platform: linux
+#          - os: macos-latest
+#            platform: darwin
           - os: windows-latest
             platform: win32
 

@@ -10,3 +10,6 @@ members = [
     "crates/integration_tests",
     "crates/syntax",
 ]
+
+[profile.release]
+lto = "false"
