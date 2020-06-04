@@ -12,4 +12,4 @@ members = [
 ]
 
 [profile.release]
-lto = "false"
+lto = "off"
