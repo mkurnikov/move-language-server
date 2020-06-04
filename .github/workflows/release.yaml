@@ -44,7 +44,7 @@ jobs:
         components: rustfmt
 
     - name: Build with --release
-      run: cargo build --release --package syntax
+      run: cargo build --package syntax
 
     - name: Language Server - upload binary as Release Asset (ubuntu, macos)
       if: matrix.os != 'windows-latest'
